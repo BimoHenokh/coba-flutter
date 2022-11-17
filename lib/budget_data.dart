@@ -1,3 +1,4 @@
+import 'package:coba_flutters/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:coba_flutters/main.dart';
 import 'package:coba_flutters/form.dart';
@@ -15,48 +16,10 @@ class _MyBudgetData extends State<MyBudgetData> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Form'),
+        title: const Text('Form'),
       ),
 
-      drawer: Drawer(
-        child: Column(
-          children: [
-            // Menambahkan clickable menu
-            ListTile(
-              title: const Text('Counter'),
-              onTap: () {
-                // Route menu ke halaman utama
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Form'),
-              onTap: () {
-                // Route menu ke halaman form
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyFormPage()),
-                );
-              },
-            ),
-
-            ListTile(
-              title: const Text('Data budget'),
-              onTap: () {
-                // Route menu ke halaman form
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyBudgetData()),
-                );
-              },
-            ),
-
-          ],
-        ),
-      ),
+      drawer: myDrawer(context),
 
       body: Center(
         child: Column(
@@ -72,7 +35,7 @@ class _MyBudgetData extends State<MyBudgetData> {
                         alignment: Alignment.topLeft,
                         child: Text(
                           e.judul,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 30,
                           ),
                         )
@@ -85,12 +48,16 @@ class _MyBudgetData extends State<MyBudgetData> {
                         alignment: Alignment.bottomRight,
                         child: Text(e.jenisBudget),
                       ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Text(e.tanggal),
+                      ),
                     ],
                   )
                 )
               )
             )
-          )).toList():[Text('Data kosong')],
+          )).toList():[const Text('Data kosong')],
         
         ),
       ),

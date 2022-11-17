@@ -1,7 +1,8 @@
-import 'package:coba_flutters/model.dart';
 import 'package:flutter/material.dart';
 import 'package:coba_flutters/form.dart';
 import 'package:coba_flutters/budget_data.dart';
+import 'package:coba_flutters/drawer.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -77,45 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
 
-      drawer: Drawer(
-        child: Column(
-          children: [
-            // Menambahkan clickable menu
-            ListTile(
-              title: const Text('Counter'),
-              onTap: () {
-                // Route menu ke halaman utama
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Form'),
-              onTap: () {
-                // Route menu ke halaman form
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyFormPage()),
-                );
-              },
-            ),
-
-            ListTile(
-              title: const Text('Data budget'),
-              onTap: () {
-                // Route menu ke halaman form
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyBudgetData()),
-                );
-              },
-            ),
-
-          ],
-        ),
-      ),
+      drawer: myDrawer(context),
 
       body: Center(
         child: Column(

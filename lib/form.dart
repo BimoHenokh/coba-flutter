@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:coba_flutters/main.dart';
 import 'package:coba_flutters/budget_data.dart';
 import 'package:coba_flutters/model.dart';
+import 'package:coba_flutters/drawer.dart';
+import 'package:intl/intl.dart';
+
 
 
 class MyFormPage extends StatefulWidget {
@@ -20,6 +23,9 @@ class _MyFormPageState extends State<MyFormPage> {
   String _jenisBudget = "Pemasukan";
   List<String> listJenisBudget = ["Pemasukan", "Pengeluaran"];
 
+  TextEditingController choosenDate = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,45 +33,7 @@ class _MyFormPageState extends State<MyFormPage> {
         title: Text('Form'),
       ),
 
-      drawer: Drawer(
-        child: Column(
-          children: [
-            // Menambahkan clickable menu
-            ListTile(
-              title: const Text('Counter'),
-              onTap: () {
-                // Route menu ke halaman utama
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Form'),
-              onTap: () {
-                // Route menu ke halaman form
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyFormPage()),
-                );
-              },
-            ),
-
-            ListTile(
-              title: const Text('Data budget'),
-              onTap: () {
-                // Route menu ke halaman form
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyBudgetData()),
-                );
-              },
-            ),
-
-          ],
-        ),
-      ),
+      drawer: myDrawer(context),
 
       body: Form(
         key: _formKey,
@@ -154,22 +122,62 @@ class _MyFormPageState extends State<MyFormPage> {
                       ),
                     ),
 
-                DropdownButton(
-                  value: _jenisBudget,
-                  icon: const Icon(Icons.keyboard_arrow_down),
-                  items: listJenisBudget.map((String items) {
-                    return DropdownMenuItem(
-                        value: items,
-                        child: Text(items),
-                    );
-                  }).toList(),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                        _jenisBudget = newValue!;
-                    });
-                  },
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: DropdownButton(
+                    value: _jenisBudget,
+                    icon: const Icon(Icons.keyboard_arrow_down),
+                    items: listJenisBudget.map((String items) {
+                      return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                          _jenisBudget = newValue!;
+                      });
+                    },
+                  ),
                 ),
 
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    controller: choosenDate, //editing controller of this TextField
+                    decoration: const InputDecoration( 
+                      icon: Icon(Icons.calendar_today), //icon of text field
+                      labelText: "Enter Date" //label text of field
+                    ),
+                    readOnly: true,  // when true user cannot edit text 
+                    onTap: () async {
+                      
+                      DateTime? pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(), //get today's date
+                          firstDate:DateTime.now(), //DateTime.now() - not to allow to choose before today.
+                          lastDate: DateTime(2101),
+
+                          
+                      );
+
+                      if(pickedDate != null ){
+                          setState(() {
+                            choosenDate.text = DateFormat('dd-MM-yyyy').format(pickedDate);
+                          });
+                      }else{
+                          print("Date is not selected");
+                      }
+                            //when click we have to show the datepicker
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                          return 'Tanggal tidak boleh kosong!';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
 
                 TextButton(
                   child: const Text(
@@ -182,7 +190,7 @@ class _MyFormPageState extends State<MyFormPage> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       setState((){
-                        listData.add(Model(_judul, _nominal, _jenisBudget));
+                        listData.add(Model(_judul, _nominal, _jenisBudget, choosenDate.text));
                       });
                     }
                   },

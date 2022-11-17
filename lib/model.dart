@@ -6,6 +6,7 @@ class Model{
   String judul;
   int nominal;
   String jenisBudget;
+  String tanggal;
   
-  Model(this.judul, this.nominal, this.jenisBudget);
+  Model(this.judul, this.nominal, this.jenisBudget, this.tanggal);
 }
