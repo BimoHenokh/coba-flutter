@@ -1,8 +1,8 @@
-import 'package:coba_flutters/drawer.dart';
+import 'package:coba_flutters/page/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:coba_flutters/main.dart';
-import 'package:coba_flutters/form.dart';
-import 'package:coba_flutters/model.dart';
+import 'package:coba_flutters/page/form.dart';
+import 'package:coba_flutters/model/budget_model.dart';
 
 class MyBudgetData extends StatefulWidget {
   const MyBudgetData({super.key});

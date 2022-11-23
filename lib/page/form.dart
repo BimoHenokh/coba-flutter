@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:coba_flutters/main.dart';
-import 'package:coba_flutters/budget_data.dart';
-import 'package:coba_flutters/model.dart';
-import 'package:coba_flutters/drawer.dart';
+import 'package:coba_flutters/page/budget_page.dart';
+import 'package:coba_flutters/model/budget_model.dart';
+import 'package:coba_flutters/page/drawer.dart';
 import 'package:intl/intl.dart';
 
 
@@ -190,7 +190,7 @@ class _MyFormPageState extends State<MyFormPage> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       setState((){
-                        listData.add(Model(_judul, _nominal, _jenisBudget, choosenDate.text));
+                        listData.add(BudgetModel(_judul, _nominal, _jenisBudget, choosenDate.text));
                       });
                     }
                   },

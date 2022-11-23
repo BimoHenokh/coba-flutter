@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:coba_flutters/form.dart';
-import 'package:coba_flutters/budget_data.dart';
-import 'package:coba_flutters/drawer.dart';
+import 'package:coba_flutters/page/form.dart';
+import 'package:coba_flutters/page/budget_page.dart';
+import 'package:coba_flutters/page/drawer.dart';
 
 
 void main() {

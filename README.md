@@ -70,3 +70,6 @@ Tugas 8
     2.  Pada widget drawer, dinavigasikan menggunakan fungsi pushReplacement, MyHomePage untuk routing widget home, MyFormPage untuk routing widget form, dan MyBudgetData untuk routing tampilan data form yang sudah diinput.
     3.  Mebuat halaman form dengan file bernama form.dart. Menggunakan TextFormField untuk menginput nama, harga, dan tanggal, serta menggunakan DropdownButton untuk menginput kategori. Lalu menggunakan TextButton untuk menginput data ke database di model.dart
     4.  Membuat halaman tampilan data yang sudah diinput dengan file bernama budget_data.dart. Membuat widget listview untuk menampilkan data yang sudah diinput. Lalu menggunakan ListTile untuk menampilkan data yang sudah diinput.
+
+Tugas 9
+1.  

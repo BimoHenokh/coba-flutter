@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:coba_flutters/main.dart';
-import 'package:coba_flutters/form.dart';
-import 'package:coba_flutters/budget_data.dart';
+import 'package:coba_flutters/page/form.dart';
+import 'package:coba_flutters/page/budget_page.dart';
+import 'package:coba_flutters/page/mywatchlist_page.dart';
 
 Widget myDrawer (context){
   return Drawer(
@@ -32,10 +33,21 @@ Widget myDrawer (context){
             ListTile(
               title: const Text('Data budget'),
               onTap: () {
-                // Route menu ke halaman form
+                // Route menu ke halaman budget
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const MyBudgetData()),
+                );
+              },
+            ),
+
+            ListTile(
+              title: const Text('My Watchlist'),
+              onTap: () {
+                // Route menu ke halaman mywatchlist
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MywatchlistPage()),
                 );
               },
             ),
