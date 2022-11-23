@@ -54,7 +54,7 @@ Tugas 8
     Form digunakan untuk membuat form.
     ListTile digunakan untuk menampilkan list yang dapat di klik.
     MaterialPageRoute digunakan untuk membuat route baru.
-    Navigator.pushReplacement digunakan untuk pindah halaman
+    Navigator digunakan untuk pindah halaman
     SingleChildScrollView digunakan untuk membuat scrollable widget.
     OutlineInputBorder digunakan untuk membuat border pada textfield.
     TextButton digunakan untuk membuat button.
@@ -62,7 +62,7 @@ Tugas 8
     TextInputType digunakan untuk menentukan tipe keyboard numerik yang akan muncul.
 
 3.  onClick, onClose, onError, onShow, renotify, requireInteraction
-#https://api.flutter.dev/flutter/dart-html/Notification-class.html
+https://api.flutter.dev/flutter/dart-html/Notification-class.html
 
 4.  Navigator menampilkan halaman sebagai stack yang berisi semua halaman yang pernah dibuka. Untuk menavigasi ke halaman baru, Navigator diakses lewat route BuildContext dan memanggil method seperti push() dan pop()
 
@@ -72,4 +72,27 @@ Tugas 8
     4.  Membuat halaman tampilan data yang sudah diinput dengan file bernama budget_data.dart. Membuat widget listview untuk menampilkan data yang sudah diinput. Lalu menggunakan ListTile untuk menampilkan data yang sudah diinput.
 
 Tugas 9
-1.  
+1.  Bisa, melakukan pengambilan data tanpa membuat model cocok dilakukan untuk coba coba. Masalahnya jika data semakin besar maka tanpa model akan sulit untuk mengelola data tersebut.
+https://docs.flutter.dev/development/data-and-backend/json
+
+2.  (Widget dari tugas sebelumnya)
+    AsyncSnapshot adalah hasil dari sebuah proses asynchronous.
+    CircularProgressIndicator adalah widget yang digunakan untuk menampilkan loading.
+    FontWeight mengatur ketebalan teks.
+    FutureBuilder adalah widget yang digunakan untuk menampilkan data yang diambil dari API.
+    ListView adalah widget yang digunakan untuk menampilkan list.
+    SizedBox digunakan untuk menentukan ukuran widget.
+
+3.  1.  app melakukan http request get terhadap uri dari json yang diinginkan
+    2.  response json yang diberikan oleh web di decode menggunakan jsonDecode 
+    3.  response json yang sudah di decode dikonversi menjadi objek model yang diinginkan untuk disimpan
+    4.  data dari model tersebut lalu ditampilkan di widget sesuai yang diinginkan
+
+4.  1.  meng-import package:coba_flutters/page/drawer.dart lalu pada Widget build untuk halaman mywatchlist ditambahkan drawer sesuai dengan method drawer yang sudah diimport
+    2.  dibuat folder model didalamnya ada file mywatchlist_model.dart yang berisi model untuk mywatchlist
+    3.  data di fetch dari uri https://tugas2-bimo-h.herokuapp.com/mywatchlist/json/, didecode lalu diubah dalam model MywatchlistData dan disimpan pada list listMywatchlistData. Untuk menampilkan data menggunakan widger FutureBuilder karena asyncronous
+        1.  setiap list yang ditap akan memanggil Navigator.push untuk menavigasi ke halaman detail mywatchlist
+        2.  pada halaman detail mywatchlist di file detail_mywatchlist_page.dart akan menampilkan data yang sudah di fetch dari uri https://tugas2-bimo-h.herokuapp.com/mywatchlist/json/ dengan juul yang sama dengan yang dipilih
+        3.  tombol dibuat menggunakan listtile ketika dipencet akan mempop halaman detail mywatchlist
+        4.  
+    
